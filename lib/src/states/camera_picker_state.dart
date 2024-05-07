@@ -312,8 +312,9 @@ class CameraPickerState extends State<CameraPicker>
     T? fallback,
   }) async {
     description ??= currentCamera;
-    if (invalidControllerMethods[description]!.contains(key)) {
-      return fallback!;
+    if (invalidControllerMethods[description]!.contains(key) &&
+        fallback != null) {
+      return fallback;
     }
     try {
       return await method();
